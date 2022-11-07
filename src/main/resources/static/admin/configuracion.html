@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - Configuracion</title>
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../css/dashboard-login.css" />
+    <link rel="stylesheet" href="../css/dashboard.css" />
+    <link rel="stylesheet" href="../css/dashboard-clientes.css" />
+    <link rel="stylesheet" href="../css/dashboard-perfil.css" />
+    <link rel="stylesheet" href="../css/dashboard-configuracion.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+      integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="content-header-dashboard">
+          <div class="icon-header-dashboard">
+            <img src="../images/ico/logo.jpg" alt="logo" class="logo" />
+            <span>Zzootec</span>
+          </div>
+          <div class="buscador">
+            <span>Dashboard</span>
+            <form>
+              <div class="group">
+                <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
+                  <g>
+                    <path
+                      d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"
+                    ></path>
+                  </g>
+                </svg>
+                <input placeholder="Search" type="search" class="input" />
+              </div>
+            </form>
+          </div>
+          <div class="perfil">
+            <div class="notificaciones">
+              <span>20 Sep 2022</span>
+              <i class="fa-regular fa-bell"></i>
+            </div>
+            <div class="profile-photo">
+              <img src="../images/Personal/Guz.jpg" />
+            </div>
+            <div class="info">
+              <p>Hey, <b>Joe</b></p>
+              <small>Admin</small>
+            </div>
+            <div class="options">
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <div class="container-content">
+          <aside>
+            <div class="sidebar">
+              <a href="dashboard.html">
+                <i class="fa-solid fa-chess-board"></i>
+                <h3>Tablero</h3>
+              </a>
+              <a href="clientes.html">
+                <i class="fa-solid fa-users"></i>
+                <h3>Clientes</h3>
+              </a>
+              <a href="ordenes.html">
+                <i class="fa-solid fa-box"></i>
+                <h3>Ordenes</h3>
+              </a>
+              <a href="productos.html">
+                <i class="fa-solid fa-clipboard-list"></i>
+                <h3>Productos</h3>
+              </a>
+              <a href="categorias.html">
+                <i class="fa-solid fa-table-cells-large"></i>
+                <h3>Categorias</h3>
+              </a>
+              <a href="mensajes.html">
+                <i class="fa-regular fa-envelope"></i>
+                <h3>Mensajes</h3>
+                <span class="message-count">26</span>
+              </a>
+              <a href="#">
+                <i class="fa-solid fa-chart-line"></i>
+                <h3>Analiticas</h3>
+              </a>
+              <a href="customizador.html">
+                <i class="fa-solid fa-user-tie"></i>
+                <h3>Customizador</h3>
+              </a>
+
+              <a href="perfil.html">
+                <i class="fa-regular fa-user"></i>
+                <h3>Perfil</h3>
+              </a>
+              <a href="configuracion.html" class="active">
+                <i class="fa-solid fa-gear"></i>
+                <h3>Configuracion</h3>
+              </a>
+
+              <a href="login.html">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <h3>Salir</h3>
+              </a>
+            </div>
+          </aside>
+
+          <div class="principal-info">
+            <div class="recents">
+              <h2>Configuracion</h2>
+              <div class="navigators-configuration">
+                <span class="active-configuration">Contraseña</span>
+                <span>Notificaciones</span>
+              </div>
+
+              <div class="container-passwords">
+                <form  method="post">
+                  <div class="form-contra-config">
+                    <label for="">Nueva contraseña</label>
+                    <input
+                      type="password"
+                      name="text"
+                      class="input"
+                      placeholder="******"
+                    />
+                  </div>
+                  <div class="form-contra-config">
+                    <label for="">Repetir contraseña</label>
+                    <input
+                      type="password"
+                      name="text"
+                      class="input"
+                      placeholder="******"
+                    />
+                  </div>
+                  <button class="button-perso1" type="submit">Modificar Contraseña</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

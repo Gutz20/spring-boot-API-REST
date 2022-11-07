@@ -1,0 +1,219 @@
+@startuml
+class com.sistema.zzootec.exceptions.UsuarioFoundException {
+}
+class com.sistema.zzootec.models.Usuario {
+- Long id
+- String username
+- String password
+- String nombre
+- String apellido
+- String email
+- String telefono
+- boolean enabled
+- String perfil
+- Set<UsuarioRol> usuarioRoles
++ boolean isAccountNonExpired()
++ boolean isAccountNonLocked()
++ boolean isCredentialsNonExpired()
++ Collection<? extends GrantedAuthority> getAuthorities()
+}
+class com.sistema.zzootec.models.Rol {
+- Long rolId
+- String rolNombre
+- Set<UsuarioRol> usuarioRoles
+}
+class com.sistema.zzootec.configurations.JwtAuthenticationFilter {
+- UserDetailsServiceImpl userDetailsService
+- JwtUtils jwtUtil
+# void doFilterInternal(HttpServletRequest,HttpServletResponse,FilterChain)
+}
+interface com.sistema.zzootec.repository.CategoriaRepository {
++ Categoria findByNombre(String)
+}
+class com.sistema.zzootec.services.CategoriaServiceImpl {
+- CategoriaRepository categoriaRepository
++ Page<Categoria> findAll(Pageable)
++ Categoria findById(Long)
++ Categoria findByNombre(String)
++ Categoria saveCategoria(Categoria)
++ void deleteCategoriaById(Long)
++ Categoria updateCategoria(Long,Categoria)
+}
+class com.sistema.zzootec.models.ImageModel {
+- Long id
+- String nombre
+- String tipo
+- byte[] picByte
+}
+class com.sistema.zzootec.controllers.ProductoController {
+- ProductoService productoService
++ List<Producto> buscarListaProductos()
++ Producto buscarProductoPorId(Long)
++ Producto buscarProductoPorNombre(String)
++ Producto guardarProducto(Producto,MultipartFile[])
++ Producto editarProducto(Long,Producto,MultipartFile[])
++ void eliminarProductoPorId(Long)
++ Set<ImageModel> uploadImage(MultipartFile[])
+}
+class com.sistema.zzootec.exceptions.UsuarioNotFoundException {
+}
+class com.sistema.zzootec.configurations.JwtUtils {
+- String SECRET_KEY
++ String extractUsername(String)
++ Date extractExpiration(String)
++ T extractClaim(String,Function<Claims,T>)
+- Claims extractAllClaims(String)
+- Boolean isTokenExpired(String)
++ String generateToken(UserDetails)
+- String createToken(Map<String,Object>,String)
++ Boolean validateToken(String,UserDetails)
+}
+interface com.sistema.zzootec.services.CategoriaService {
++ Page<Categoria> findAll(Pageable)
++ Categoria findById(Long)
++ Categoria findByNombre(String)
++ Categoria saveCategoria(Categoria)
+~ void deleteCategoriaById(Long)
+~ Categoria updateCategoria(Long,Categoria)
+}
+interface com.sistema.zzootec.services.UsuarioService {
++ Usuario guardarUsuario(Usuario,Set<UsuarioRol>)
++ Usuario obtenerUsuario(String)
++ Usuario update(Long,Usuario)
++ void eliminarUsuario(Long)
++ Page<Usuario> findAll(Pageable)
++ Usuario findById(Long)
+}
+interface com.sistema.zzootec.repository.ProductoRepository {
++ Producto findByNombre(String)
+}
+interface com.sistema.zzootec.repository.RolRepository {
+}
+class com.sistema.zzootec.controllers.UsuarioController {
+- UsuarioService usuarioService
+- BCryptPasswordEncoder bCryptPasswordEncoder
++ Page<Usuario> listarUsuarios(Pageable)
++ Usuario obtenerUsuarioPorId(Long)
++ Usuario obtenerUsuario(String)
++ Usuario guardarUsuario(Usuario)
++ Usuario editarUsuario(Long,Usuario)
++ void eliminarUsuarioPorId(Long)
+}
+class com.sistema.zzootec.models.Producto {
+- Long productoId
+- String nombre
+- String descripcion
+- Double precio
+- Integer cantidad
+- Set<ImageModel> imagenes
+- Categoria categoria
+}
+class com.sistema.zzootec.models.UsuarioRol {
+- Long usuarioRolId
+- Usuario usuario
+- Rol rol
++ Long getUsuarioRolId()
++ void setUsuarioRolId(Long)
++ Usuario getUsuario()
++ void setUsuario(Usuario)
++ Rol getRol()
++ void setRol(Rol)
+}
+interface com.sistema.zzootec.repository.UsuarioRepository {
++ Usuario findByUsername(String)
+}
+class com.sistema.zzootec.models.Categoria {
+- Long categoriaId
+- String nombre
+- String descripcion
+- Set<Producto> productos
+}
+class com.sistema.zzootec.models.JwtResponse {
+- String token
+}
+class com.sistema.zzootec.models.Authority {
+- String authority
++ String getAuthority()
+}
+class com.sistema.zzootec.configurations.MySecurityConfig {
+- JwtAuthenticationEntryPoint unauthorizedHandler
+- UserDetailsServiceImpl userDetailsServiceImpl
+- JwtAuthenticationFilter jwtAuthenticationFilter
++ AuthenticationManager authenticationManagerBean()
++ BCryptPasswordEncoder passwordEncoder()
+# void configure(AuthenticationManagerBuilder)
+# void configure(HttpSecurity)
+}
+class com.sistema.zzootec.services.UserDetailsServiceImpl {
+- UsuarioRepository usuarioRepository
++ UserDetails loadUserByUsername(String)
+}
+class com.sistema.zzootec.controllers.CategoriaController {
+- CategoriaService categoriaService
++ Page<Categoria> buscarListaCategorias(Pageable)
++ Categoria buscarCategoriaPorId(Long)
++ Categoria buscarCategoriaPorNombre(String)
++ Categoria guardarCategoria(Categoria)
++ Categoria modificarCategoria(Long,Categoria)
++ void eliminarCategoriaPorId(Long)
+}
+class com.sistema.zzootec.models.JwtRequest {
+- String username
+- String password
+}
+class com.sistema.zzootec.controllers.AuthenticationController {
+- AuthenticationManager authenticationManager
+- UserDetailsServiceImpl userDetailsService
+- JwtUtils jwtUtils
++ ResponseEntity<?> generarToken(JwtRequest)
+- void autenticar(String,String)
++ Usuario obtenerUsuarioActual(Principal)
+}
+class com.sistema.zzootec.configurations.JwtAuthenticationEntryPoint {
++ void commence(HttpServletRequest,HttpServletResponse,AuthenticationException)
+}
+interface com.sistema.zzootec.services.ProductoService {
++ List<Producto> findAll()
++ Producto findById(Long)
++ Producto saveProducto(Producto)
++ Producto update(Long,Producto)
++ void deleteById(Long)
++ Producto findByNombre(String)
+}
+class com.sistema.zzootec.services.ProductoServiceImpl {
+- ProductoRepository productoRepository
++ List<Producto> findAll()
++ Producto findById(Long)
++ Producto saveProducto(Producto)
++ Producto update(Long,Producto)
++ void deleteById(Long)
++ Producto findByNombre(String)
+}
+class com.sistema.zzootec.services.UsuarioServiceImpl {
+- UsuarioRepository usuarioRepository
+- RolRepository rolRepository
++ Usuario guardarUsuario(Usuario,Set<UsuarioRol>)
++ Usuario obtenerUsuario(String)
++ void eliminarUsuario(Long)
++ Page<Usuario> findAll(Pageable)
++ Usuario findById(Long)
++ Usuario update(Long,Usuario)
+}
+
+
+com.sistema.zzootec.exceptions.Exception <|-- com.sistema.zzootec.exceptions.UsuarioFoundException
+org.springframework.security.core.userdetails.UserDetails <|.. com.sistema.zzootec.models.Usuario
+org.springframework.web.filter.OncePerRequestFilter <|-- com.sistema.zzootec.configurations.JwtAuthenticationFilter
+org.springframework.data.jpa.repository.JpaRepository <|-- com.sistema.zzootec.repository.CategoriaRepository
+com.sistema.zzootec.services.CategoriaService <|.. com.sistema.zzootec.services.CategoriaServiceImpl
+com.sistema.zzootec.exceptions.Exception <|-- com.sistema.zzootec.exceptions.UsuarioNotFoundException
+org.springframework.data.jpa.repository.JpaRepository <|-- com.sistema.zzootec.repository.ProductoRepository
+org.springframework.data.jpa.repository.JpaRepository <|-- com.sistema.zzootec.repository.RolRepository
+org.springframework.data.jpa.repository.JpaRepository <|-- com.sistema.zzootec.repository.UsuarioRepository
+org.springframework.security.core.GrantedAuthority <|.. com.sistema.zzootec.models.Authority
+org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter <|-- com.sistema.zzootec.configurations.MySecurityConfig
+org.springframework.security.core.userdetails.UserDetailsService <|.. com.sistema.zzootec.services.UserDetailsServiceImpl
+org.springframework.security.web.AuthenticationEntryPoint <|.. com.sistema.zzootec.configurations.JwtAuthenticationEntryPoint
+com.sistema.zzootec.services.ProductoService <|.. com.sistema.zzootec.services.ProductoServiceImpl
+com.sistema.zzootec.services.UsuarioService <|.. com.sistema.zzootec.services.UsuarioServiceImpl
+@enduml

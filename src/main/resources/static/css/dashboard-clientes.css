@@ -1,0 +1,159 @@
+.container-content {
+  grid-template-columns: 14rem 1fr;
+}
+
+.display-img {
+  display: flex;
+  justify-content: center;
+}
+
+.content-img {
+  display: grid;
+  grid-template-columns: 50px 200px;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+}
+
+.recents {
+  background: var(--color-white);
+  width: 100%;
+  border-radius: var(--card-border-radius);
+  padding: var(--card-padding);
+  text-align: center;
+  box-shadow: var(--box-shadow);
+  transition: all 300ms ease;
+}
+
+.img-content-data {
+  display: inline;
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 0.5em;
+}
+
+.profile-photo-data img {
+  position: relative;
+  top: -15px;
+  left: -5px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin: 30%;
+  border:2px solid #fff;
+  display: block;
+}
+
+div.recents table {
+  box-shadow: none !important;
+}
+
+.recents > div.filters h2 {
+  color: var(--color-dark);
+  margin-bottom: 0;
+}
+
+.filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filters input {
+  color: var(--color-dark) !important;
+}
+
+.principal-info .date {
+  margin-top: 0;
+}
+
+.filters-inter {
+  display: flex;
+  align-items: center;
+  width: 60%;
+  justify-content: space-evenly;
+}
+
+.fancy {
+  background-color: transparent;
+  border: 2px solid #000;
+  border-radius: 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin: 0;
+  outline: none;
+  overflow: visible;
+  padding: 1.25em 2em;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  text-transform: none;
+  transition: all 0.3s ease-in-out;
+  user-select: none;
+  font-size: 13px;
+}
+
+.principal-info .recents a {
+  margin: 0;
+}
+
+.filters-inter > i {
+  background: var(--color-light);
+  padding: 14px;
+  border-radius: 25%;
+}
+
+.btn {
+  position: relative;
+  font-size: 17px;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1em 2.5em;
+  display: inline-block;
+  border-radius: 6em;
+  transition: all 0.2s;
+  border: none;
+  font-family: inherit;
+  font-weight: 500;
+  color: black;
+  background-color: var(--color-success);
+  cursor: pointer;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all 0.4s;
+}
+
+.btn::after {
+  background-color: var(--color-success);
+}
+
+.btn:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+}
