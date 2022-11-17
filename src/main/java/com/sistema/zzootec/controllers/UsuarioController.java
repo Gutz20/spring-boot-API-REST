@@ -12,6 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @CrossOrigin("*")
@@ -31,6 +32,11 @@ public class UsuarioController {
         return usuarioService.findAll(pageable);
     }
 
+    @GetMapping("/rol/{rol}")
+    public List<Usuario> listarUsuariosPorRol(@PathVariable("rol") String nombreRol) {
+        return usuarioService.findUsersByRol(nombreRol);
+    }
+
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/id/{usuarioId}")
     public Usuario obtenerUsuarioPorId(@PathVariable("usuarioId") Long usuarioId) {
@@ -41,6 +47,27 @@ public class UsuarioController {
     @GetMapping("/{username}")
     public Usuario obtenerUsuario(@PathVariable("username") String username) {
         return usuarioService.obtenerUsuario(username);
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("")
+    public Usuario guardarAdmin(@RequestBody Usuario usuario) throws Exception {
+        usuario.setPerfil("default.png");
+
+        usuario.setPassword(this.bCryptPasswordEncoder.encode(usuario.getPassword()));
+
+        Set<UsuarioRol> usuarioRoles = new HashSet<>();
+
+        Rol rol = new Rol();
+        rol.setRolId(1L);
+        rol.setRolNombre("ADMIN");
+
+        UsuarioRol usuarioRol = new UsuarioRol();
+        usuarioRol.setUsuario(usuario);
+        usuarioRol.setRol(rol);
+
+        usuarioRoles.add(usuarioRol);
+        return usuarioService.guardarUsuario(usuario, usuarioRoles);
     }
 
     @ResponseStatus(HttpStatus.CREATED)

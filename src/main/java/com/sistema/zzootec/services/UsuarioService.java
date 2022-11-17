@@ -16,5 +16,5 @@ public interface UsuarioService {
     public Page<Usuario> findAll(Pageable pageable);
     public Usuario findById(Long id);
 
-
+    public List<Usuario> findUsersByRol(String rol);
 }

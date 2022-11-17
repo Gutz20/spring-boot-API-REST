@@ -3,9 +3,15 @@ package com.sistema.zzootec.controllers;
 import com.sistema.zzootec.models.Factura;
 import com.sistema.zzootec.services.FacturaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 @CrossOrigin("*")
@@ -37,5 +43,7 @@ public class FacturaController {
     public List<Factura> getAllOrderByUserId(@PathVariable("id") Long id) {
         return facturaService.findOrdersByUsuarioId(id);
     }
+
+
 
 }

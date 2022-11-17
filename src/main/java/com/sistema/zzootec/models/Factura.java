@@ -33,6 +33,8 @@ public class Factura {
     @JoinColumn(name = "id_factura")
     private List<ItemFactura> itemFacturas = new ArrayList<>();
 
+    private boolean estado;
+
     @PrePersist
     public void prePersist() {
         this.fechaCreacion = new Date();

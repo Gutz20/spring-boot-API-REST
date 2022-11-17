@@ -53,7 +53,7 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
                 .cors()
                 .disable()
                 .authorizeRequests()
-                .antMatchers("/generate-token","/api/usuarios/", "/api/productos", "/api/productos/{id}", "/api/categorias").permitAll()
+                .antMatchers("/generate-token","/api/usuarios/", "/api/productos", "/api/productos/{id}", "/api/categorias", "/api/productos/categoria/{idCategoria}").permitAll()
                 .antMatchers(HttpMethod.OPTIONS).permitAll()
                 .anyRequest().authenticated()
                 .and()
@@ -63,4 +63,5 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
     }
+
 }

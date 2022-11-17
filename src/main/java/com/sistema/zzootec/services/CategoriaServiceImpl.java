@@ -49,6 +49,11 @@ public class CategoriaServiceImpl implements CategoriaService {
             categoriaDB.setNombre(categoria.getNombre());
         }
 
+        if (Objects.nonNull(categoria.getDescripcion()) &&
+                !"".equalsIgnoreCase(categoria.getDescripcion())) {
+            categoriaDB.setDescripcion(categoria.getDescripcion());
+        }
+
         return categoriaRepository.save(categoriaDB);
     }
 

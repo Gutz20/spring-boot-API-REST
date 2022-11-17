@@ -16,4 +16,5 @@ public interface ProductoService {
     public Producto findByNombre(String nombreProducto);
     public List<Producto> findProductsByCategoria(Long idCategoria);
     public List<Producto> findProductsRelacionados(Long idCategoria, Long idProducto);
+
 }

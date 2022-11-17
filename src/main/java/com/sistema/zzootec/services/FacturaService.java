@@ -1,6 +1,8 @@
 package com.sistema.zzootec.services;
 
 import com.sistema.zzootec.models.Factura;
+import org.springframework.core.io.Resource;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 

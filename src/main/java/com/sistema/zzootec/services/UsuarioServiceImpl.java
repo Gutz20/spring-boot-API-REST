@@ -10,6 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -55,6 +56,11 @@ public class UsuarioServiceImpl implements UsuarioService{
     @Override
     public Usuario findById(Long id) {
         return usuarioRepository.findById(id).get();
+    }
+
+    @Override
+    public List<Usuario> findUsersByRol(String rol) {
+        return usuarioRepository.findUsersByRol(rol);
     }
 
     @Override
